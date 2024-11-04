@@ -1,0 +1,19 @@
+
+img{
+    width: 50px;
+    height: auto;
+}
+main{
+    display: flex;
+    flex: 1 1 250px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 5px solid black;
+}
+main div{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin: 5%;
+}

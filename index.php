@@ -1,26 +1,41 @@
+
 <?php
 
+// Get the requested URL from the 'url' query parameter
 $url = isset($_GET['url']) ? rtrim($_GET['url'], '/') : '';
 
+// Define available routes (URL => corresponding PHP file)
 $routes = [
-'' => 'public/index.php',
-'vinyl' => 'public/vinyl.php',
-'registration' => 'public/register/index.php',
-'register' => 'public/register/register.php',
-'login' => 'public/login/index.php',
-'admin' => 'public/admin/index.php',
-'user' => 'public/user/index.php',
-'moreinfo' => 'public/user/moreInfo.php',
-'artist' => 'public/user/artistInfo.php',
-
-
-
-'authenticate' => 'public/login/authenticate.php',
-'logout' => 'public/logout.php',
-'404error' => '/404.php',
+    '' => 'public/index.php',          // Home route
+    'vinyl' => 'public/vinyl.php',          // Home route
+    'register' => 'public/register/index.php',    // register page route
+    'login' => 'public/login/index.php', // login page route
+    'admin' => 'public/admin/index.php', // admin page route
+    'allUsers' => 'public/admin/allUsers.php', // allusers page route
+    'pending' => 'public/admin/pending.php',
+    'publish'=>'public/admin/publish.php',
+    'unpublish'=>'public/admin/unpublish.php',
+    'moreinfo' => 'public/user/moreInfo.php',
+    'artist' => 'public/user/artistInfo.php',
+    'user' => 'public/user/index.php', // user page route
+    'uploads' => 'public/user/upload.php', // upload page route
+    'account' => 'public/user/account.php', // account page route 
+    'search' => 'public/searchResults.php',
+    
+    // config routes
+    'authenticate' => 'public/login/authenticate.php', // logging in user page config route
+    'registerConfig' => 'public/register/register.php', // registering user page config route
+    'uploadConfig' => 'public/user/uploadConfig.php', // pending page route
+    'logout' => 'public/logout.php', // pending page route
 
 ];
 
-if(array_key_exists($url, $routes)){
-    require $routes[$url];
-}
+// Check if the URL matches a route
+if (array_key_exists($url, $routes)) {
+    require $routes[$url];  // Load the appropriate file for the route
+} //else {
+    // If no route matches, show a 404 page
+    //require '404.php';
+//}
+// 
+?>

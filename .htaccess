@@ -1,5 +1,9 @@
 RewriteEngine On
 RewriteBase /musicOnline/
+
+# If the file or directory exists, skip rewriting
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ ubdex.php?url=$1 [QSA,L]
+
+# Rewrite all other URLs to index.php with the query parameter 'url'
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
